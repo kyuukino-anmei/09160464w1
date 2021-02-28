@@ -1,37 +1,39 @@
-## Welcome to GitHub Pages
+# 【第１題】SOIT106_ADVANCE_002：進階題：分式化簡 
+```C
 
-You can use the [editor on GitHub](https://github.com/kyuukino-anmei/09160464w1/edit/gh-pages/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+# 【第２題】SOIT106_ADVANCE_003：進階題：讀入整數反序列印
+```C
 
-### Jekyll Themes
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kyuukino-anmei/09160464w1/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+# 【第３題】SOIT106_ADVANCE_005_C：進階題：A的B次方函數
+```C
 
-### Support or Contact
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+# 【第４題】SOIT106_ADVANCE_006：進階題：漸增數列相加 
+```C
+
+```
+
+# 【第５題】SOIT106_BASE_002：基礎題：找零錢 
+```C
+
+```
+
+# 【第６題】SOIT106_BASE_005：基礎題：因數個數 
+```C
+
+```
+
+# 【第７題】SOIT106_BASE_010：基礎題：找倍數 
+```C
+
+```
+
+# 【第８題】SOIT106_BASE_012：基礎題：整數轉換為等級 
+```C
+
+```
