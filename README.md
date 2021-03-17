@@ -1,89 +1,87 @@
-![](https://i.imgur.com/TeVzjKB.png)
+![](https://i.imgur.com/FL9JPy6.png)
+```c
+#include <stdio.h>
+int a[5]={0,10,20,30,40};
+int main()
+{
+    int *p=&a[2];
+    *p=222;
+    
+    p+=2;
+    *p=666;
+}
+```
+![](https://i.imgur.com/FUzXYNX.png)
 
 ```c
 #include <stdio.h>
+int a[5]={0,10,20,30,40};
+void printAll()
+{
+    for(int i=0; i<5; i++)
+    {
+        printf("%d", a[i]);
+    }
+    printf("\n");
+}
 int main()
 {
-    int n1=10, n2=20, n3=30;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
-    int *p=&n1;
-    *p=200;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
-    return 0;
+    int *p=&a[2];
+    *p=222;
+    printAll();
+    
+    p+=2;
+    *p=666;
+    printAll();
+    
+    p--;
+    *p=555;
+    printAll();
 }
 ```
-
-![](https://i.imgur.com/ECnWJi9.png)
+![](https://i.imgur.com/3cct5MQ.png)
 
 ```c
 #include <stdio.h>
+int a[5]={0,10,20,30,40};
+void printAll()
+{
+    for(int i=0; i<5; i++)
+    {
+        printf("%d", a[i]);
+    }
+    printf("\n");
+}
 int main()
 {
-    int n1=10, n2=20, n3=30;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
-    int *p=&n1;
-    *p=200;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
-    int *p2=&n3;
-    *p2=300;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
+    int *p=&a[2];
+    *p=222;
+    printAll();
+    
+    int *p2=p+4;
+    p2=666;
+    printAll();
+    
+    p2--;
+    *p2=555;
+    printAll();
+    
     return 0;
 }
 ```
-
-![](https://i.imgur.com/CPI5XiC.png)
+![](https://i.imgur.com/JZluJn0.png)
 
 ```c
 #include <stdio.h>
+#include <stdlib.h>
+
+int a[10];
 int main()
 {
-    int n1=10, n2=20, n3=30;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
-    int *p=&n1;
-    *p=200;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
-    int *p2=&n3;
-    *p2=300;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
-    p2=p;
-    *p2=400;
-    printf("n1:%d n2:%d n3:%d\n", n1, n2, n3);
-
+    int b[10];
+    
+    int *p=(int*)malloc(sizeof(int)*10);
+    
     return 0;
 }
 ```
-
-![](https://i.imgur.com/ytWEXWO.png)
-[](https://)
-```c
-#include <stdio.h>
-int n[3]={10,20,30};
-int main()
-{
-    printf("n[0]:%d n[1]:%d n[2]:%d\n", n[0], n[1], n[2]);
-
-    int *p=&n[0];
-    *p=200;
-    printf("n[0]:%d n[1]:%d n[2]:%d\n", n[0], n[1], n[2]);
-
-    int *p2=&n[2];
-    *p2=300;
-    printf("n[0]:%d n[1]:%d n[2]:%d\n", n[0], n[1], n[2]);
-
-    p2=p;
-    *p2=400;
-    printf("n[0]:%d n[1]:%d n[2]:%d\n", n[0], n[1], n[2]);
-
-    return 0;
-}
-
-```
-
