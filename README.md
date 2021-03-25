@@ -1,87 +1,107 @@
-#HW04
-![](https://i.imgur.com/8R6hK87.png)
-```C
+![](https://i.imgur.com/UYHkQ3y.png)
+```c
 #include <stdio.h>
-struct DATA
-{
-    float x, y, z;
-};
+char line[20]="233233233233233233";
 int main()
 {
-    
+    char *p=line;
+    //gets(line);
+
+    for(int i=0; line[i]!=0; i++)
+    {
+        p=&line[i];
+        char c=line[i];
+        if(c!='2') printf("%c", c);
+    }
+    printf("\n");
 }
 ```
-![](https://i.imgur.com/4f6Adxt.png)
-```C    
+![](https://i.imgur.com/4SIDvwD.png)
+```c
 #include <stdio.h>
-struct DATA
-{
-    float x, y, z;
-} point1;
 int main()
 {
-    point1.x=3;
-    point1.y=5;
-    point1.z=7;
-    printf("%f %f %f\n", point1.x, point1.y, point1.z);
+    char line[10]="decline";
+    char line2[10]={'p','r','o','p','e','r','\0'};
+
+    printf("%s\n", line);
+    printf("%s\n", line2);
 }
 ```
-![](https://i.imgur.com/TNIdkbl.png)
-```C 
+![](https://i.imgur.com/Dtqjz4j.png)
+```c
 #include <stdio.h>
-struct DATA
-{
-    float x, y, z;
-} point1;
-struct DATA points[5];
 int main()
 {
+    char line[10]="decline";
+    char line2[10]={'p','r','o','p','e','r','\0'};
+
+    printf("%s\n", line);
+    printf("%s\n", line2);
+
+    char line3[]="majority這是好的，沒問題，要多長有多長";
+    char line4[]={'m','a','j','o','r','i','t','y'};
+    printf("%s\n", line3);
+
+    printf("你相信嗎? 這是 line4:==%s==\n", line4);
+}
+```
+![](https://i.imgur.com/ICB4QrQ.png)
+```c
+#include <stdio.h>
+int main()
+{
+    char line[5][10]={"decline", "proper", "majority", "bullet", "shop"};
+    char *p;
     for(int i=0; i<5; i++)
     {
-        points[i].x=i*10;
-        points[i].y=20;
-        points[i].z=0;
-        printf("%f %f %f\n", points[i].x, points[i].y, points[i].z);    
+        p=line[i];
+        printf("%s\n", line[i]);
     }
 }
 ```
-![](https://i.imgur.com/jQkNIcf.png)
-```C  
+![](https://i.imgur.com/o5l58ID.png)
+```c
 #include <stdio.h>
-struct DATA
-{
-    float x, y, z;
-} a, b, c;
-struct DATA points[5];
+int a[3][3]={ {1,2,3}, {4,5,6}, {7,8,9} };
 int main()
 {
-    for(int i=0; i<5; i++)
+    for(int i=0; i<3; i++)
     {
-        points[i].x=i*10;
-        points[i].y=20;
-        points[i].z=0;
-        printf("%f %f %f\n", points[i].x, points[i].y, points[i].z);    
+        for(int j=0; j<3; j++)
+        {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
     }
 }
 ```
-![](https://i.imgur.com/Ihj4qVw.png)
-```C   
-include <stdio.h>
-struct DATA
-{
-    float x, y, z;
-} a, b;
-struct DATA c, d;
+![](https://i.imgur.com/DSawX8K.png)
+```c
+#include <stdio.h>
+#include <string.h>
+char line[100][10];
 int main()
 {
-    struct DATA e;
-    struct DATA f={1,2,3};
-    
-    printf("%f %f %f\n", a.x, a.y, a.z);
-    printf("%f %f %f\n", b.x, b.y, b.z);
-    printf("%f %f %f\n", c.x, c.y, c.z);
-    printf("%f %f %f\n", d.x, d.y, d.z);
-    printf("%f %f %f\n", e.x, e.y, e.z);
-    printf("%f %f %f\n", f.x, f.y, f.z);
+	int N;
+	scanf("%d", &N);
+	
+	for(int i=0; i<N; i++) scanf("%s", &line[i]);
+	
+	char temp[10];
+	for(int i=0; i<N; i++)
+	{
+		for(int j=i+1; j<N; j++)
+		{
+			if(strcmp(line[i], line[j])> 0)
+			{
+				strcpy(temp, line[i]);
+				strcpy(line[i], line[j]);
+				strcpy(line[j], temp);
+			}
+		}
+	}
+	
+	for(int i=0; i<N; i++) printf("%s\n", line[i]);
 }
 ```
