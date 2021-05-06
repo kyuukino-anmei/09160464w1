@@ -1,158 +1,134 @@
-![](https://i.imgur.com/pUvhkzr.png)
+![](https://i.imgur.com/Q7H2ncV.png)
+```c
+#include <stdio.h>
+typedef struct data
+{
+    char c;
+    int ans;
+}DATA;
+DATA listA;
+int main()
+{
+    listA.c='A';
+    listA.ans=1;
+    printf("%c %d\n", listA.c, listA.ans);
+}
 
-```c    
+```
+![](https://i.imgur.com/xIavWlB.png)
+```c
 #include <stdio.h>
-#include <stdlib.h>
-char *line=(char*)malloc(32*sizeof(char));
+typedef struct data
+{
+    char c;
+    int ans;
+}DATA;
+DATA listA;
 int main()
 {
-	int n;
-	scanf("%d\n", &n);
-	
-	for(int i=0; i<n; i++)
-	{
-		gets(line);
-		printf("%s\n", line);
-	}
+    listA.c='A';
+    listA.ans=1;
+    printf("%c %d\n", listA.c, listA.ans);
 }
 ```
-![](https://i.imgur.com/Ba2bbyD.png)
+![](https://i.imgur.com/mnvJ74c.png)
 ```c
 #include <stdio.h>
 #include <stdlib.h>
-char *line=(char*)malloc(32*sizeof(char));
-int main()
-{
-	int n;
-	scanf("%d\n", &n);
-	
-	for(int i=0; i<n; i++)
-	{
-		gets(line);
-		for(int k=0; line[k]!=0; k++)
-		{
-			char x=line[k];
-			if(x>='A' && x<='Z') printf("大");
-			else if(x>='a' && x<='z') printf("小");
-			else printf("他");
-		}
-	}
-}
-```
-![](https://i.imgur.com/vMjJXWF.png)
-```c
-#include <stdio.h>
-#include <stdlib.h>
-char *line=(char*)malloc(32*sizeof(char));
-int ans[26];
-int main()
-{
-	int n;
-	scanf("%d\n", &n);
-	
-	for(int i=0; i<n; i++)
-	{
-		gets(line);
-		for(int k=0; line[k]!=0; k++)
-		{
-			char x=line[k];
-			if(x>='A' && x<='Z') ans[x-'A']++;
-			else if(x>='a' && x<='z') ans[x-'a']++;
-		}
-	}
-	
-	for(int i=0; i<26; i++)
-	{
-		printf("%c %d\n", 'A'+i, ans[i]);
-	}
-}
-```
-![](https://i.imgur.com/DIuBoZM.png)
-```c
-#include <stdio.h>
-#include <stdlib.h>
-char *line=(char*)malloc(32*sizeof(char));
-int ans[26];
-char letter[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-int main()
-{
-	int n;
-	scanf("%d\n", &n);
-	
-	for(int i=0; i<n; i++)
-	{
-		gets(line);
-		for(int k=0; line[k]!=0; k++)
-		{
-			char x=line[k];
-			if(x>='A' && x<='Z') ans[x-'A']++;
-			else if(x>='a' && x<='z') ans[x-'a']++;
-		}
-	}
-	
-	for(int i=0; i<26; i++)
-	{
-		for(int k=i+1; k<26; k++)
-		{
-			if(ans[i]<ans[k] || (ans[i]==ans[k] && letter[i]>letter[k]))
-			{
-				int t=ans[i];
-				ans[i]=ans[k];
-				ans[k]=t;
-				
-				char x=letter[i];
-				letter[i]=letter[k];
-				letter[k]=x;
-			}
-		}
-	}
-	
-	for(int i=0; i<26; i++)
-	{
-		if(ans[i]>0) printf("%c %d\n", letter[i], ans[i]);
-	}
-}
-```
-![](https://i.imgur.com/5EWZ07C.png)
-```c
-#include <stdio.h>
-#include <stdlib.h>
-char *line=(char*)malloc(32*sizeof(char));
-typedef struct
-{
-	int ans;
-	char x;
-}BOX;
-BOX array[26];
 int compare(const void *p1, const void *p2)
 {
-	if(((BOX*)p1)->ans > ((BOX*)p2)->ans) return -1;
-	else if(((BOX*)p1)->ans < ((BOX*)p2)->ans) return +1;
-	else if(((BOX*)p1)->x < ((BOX*)p2)->x) return -1;
-	else if(((BOX*)p1)->x > ((BOX*)p2)->x) return +1;
-	else return 0;
+    int d1=*((int*)p1);
+    int d2=*((int*)p2);
+    if(d1>d2) return 1;
+    if(d1==d2) return 0;
+    if(d1<d2) return -1;
+}
+int a[10]={4,8,3,2,5,7,9,1,6,10};
+int main()
+{
+    qsort(a, 10, sizeof(int), compare);
+
+    for(int i=0; i<10; i++)
+    {
+        printf("%d ", a[i]);
+    }
+}
+```
+![](https://i.imgur.com/ifoZpQb.png)
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+char kuni[2000][80];
+char hoka[80];
+int compare(const void *p1, const void *p2)
+{
+	return strcmp((char*)p1, (char*)p2);
 }
 int main()
 {
-	for(int i=0; i<26; i++) array[i].x='A'+i;
-	
 	int n;
-	scanf("%d\n", &n);
+	scanf("%d", &n);
 	
 	for(int i=0; i<n; i++)
 	{
-		gets(line);
-		for(int k=0; line[k]!=0; k++)
-		{
-			char x=line[k];
-			if(x>='A' && x<='Z') array[x-'A'].ans++;
-			else if(x>='a' && x<='z') array[x-'a'].ans++; 
-		}
+		scanf("%s", kuni[i]);
+		gets(hoka);
 	}
 	
-	qsort(array, 26, sizeof(BOX), compare);
+	qsort(kuni, n, 80, compare);
 	
-	for(int i=0; i<26; i++) if(array[i].ans>0) printf("%c %d\n", array[i].x, array[i].ans);
+	int ans=1;
+	printf("%s ", kuni[0]);
+	for(int i=0; i<n-1; i++)
+	{
+		if(strcmp(kuni[i], kuni[i+1])==0) ans++;
+		else 
+		{
+			printf("%d\n", ans);
+			printf("%s ", kuni[i+1]);
+			ans=1;
+		}
+	}
+	printf("%d\n", ans);
 }
 ```
-
+![](https://i.imgur.com/4oB9R3P.png)
+```c
+#include <stdio.h>
+char line[1001];
+int main()
+{
+	for(int t=0; gets(line)!=NULL; t++)
+	{
+		if(t>0) printf("\n");
+		printf("blahblah");
+		printf("blahblah");
+		printf("blahblah");
+	}
+}
+```
+![](https://i.imgur.com/b5Smnro.png)
+```c
+#include <stdio.h>
+char line[1001];
+int ans[256];
+int main()
+{
+	for(int t=0; gets(line)!=NULL; t++)
+	{
+		for(int i=0; i<256; i++) ans[i]=0;
+		
+		for(int i=0; line[i]!=0; i++)
+		{
+			char c=line[i];
+			ans[c]++;
+		}
+		
+		if(t>0) printf("\n");
+		
+		for(int i=0; i<256; i++) if(ans[i]>0) printf("%d %d\n", i, ans[i]);
+		
+	}
+}
+```
