@@ -1,134 +1,174 @@
-![](https://i.imgur.com/Q7H2ncV.png)
+![](https://i.imgur.com/ydpht4p.png)
 ```c
 #include <stdio.h>
-typedef struct data
-{
-    char c;
-    int ans;
-}DATA;
-DATA listA;
+char line[2000];
 int main()
 {
-    listA.c='A';
-    listA.ans=1;
-    printf("%c %d\n", listA.c, listA.ans);
-}
-
-```
-![](https://i.imgur.com/xIavWlB.png)
-```c
-#include <stdio.h>
-typedef struct data
-{
-    char c;
-    int ans;
-}DATA;
-DATA listA;
-int main()
-{
-    listA.c='A';
-    listA.ans=1;
-    printf("%c %d\n", listA.c, listA.ans);
-}
-```
-![](https://i.imgur.com/mnvJ74c.png)
-```c
-#include <stdio.h>
-#include <stdlib.h>
-int compare(const void *p1, const void *p2)
-{
-    int d1=*((int*)p1);
-    int d2=*((int*)p2);
-    if(d1>d2) return 1;
-    if(d1==d2) return 0;
-    if(d1<d2) return -1;
-}
-int a[10]={4,8,3,2,5,7,9,1,6,10};
-int main()
-{
-    qsort(a, 10, sizeof(int), compare);
-
-    for(int i=0; i<10; i++)
+    for(int t=0; gets(line); t++)
     {
-        printf("%d ", a[i]);
+        int ans[256]={};
+        char ascii[256];
+        
+        for(int i=0; i<256; i++)
+        {
+            char c=line[i];
+            ans[c]++;
+        }
+        
+        for(int i=0; i<256; i++)
+        {
+            for(int j=i+1; j<256; j++)
+            {
+                if(ans[i]>ans[j])
+                {
+                    int t=ans[i];
+                    ans[i]=ans[j];
+                    ans[j]=t;
+                    
+                    char c=ascii[i];
+                    ascii[i]=ascii[j];
+                    ascii[j]=c;
+                }
+            }
+        }
+        
+        if(t>0) printf("\n");
+        for(int i=0; i<256; i++) if(ans[i]>0) printf("%d %d\n", ascii[i], ans[i]);
     }
 }
 ```
-![](https://i.imgur.com/ifoZpQb.png)
+![](https://i.imgur.com/YOXn0Pe.png)
+
 ```c
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-char kuni[2000][80];
-char hoka[80];
-int compare(const void *p1, const void *p2)
-{
-	return strcmp((char*)p1, (char*)p2);
-}
+char line[2000];
 int main()
 {
-	int n;
-	scanf("%d", &n);
-	
-	for(int i=0; i<n; i++)
-	{
-		scanf("%s", kuni[i]);
-		gets(hoka);
-	}
-	
-	qsort(kuni, n, 80, compare);
-	
-	int ans=1;
-	printf("%s ", kuni[0]);
-	for(int i=0; i<n-1; i++)
-	{
-		if(strcmp(kuni[i], kuni[i+1])==0) ans++;
-		else 
-		{
-			printf("%d\n", ans);
-			printf("%s ", kuni[i+1]);
-			ans=1;
-		}
-	}
-	printf("%d\n", ans);
-}
-```
-![](https://i.imgur.com/4oB9R3P.png)
-```c
-#include <stdio.h>
-char line[1001];
-int main()
-{
-	for(int t=0; gets(line)!=NULL; t++)
-	{
-		if(t>0) printf("\n");
-		printf("blahblah");
-		printf("blahblah");
-		printf("blahblah");
-	}
+    for(int t=0; gets(line); t++)
+    {
+        int ans[256]={};
+        char ascii[256];
+        
+        for(int i=0; i<256; i++)
+        {
+            char c=line[i];
+            ans[c]++;
+        }
+        
+        for(int i=0; i<256; i++)
+        {
+            for(int j=i+1; j<256; j++)
+            {
+                if(ans[i]>ans[j])
+                {
+                    int t=ans[i];
+                    ans[i]=ans[j];
+                    ans[j]=t;
+                    
+                    char c=ascii[i];
+                    ascii[i]=ascii[j];
+                    ascii[j]=c;
+                }
+                
+                if(ans[i]==ans[j] && ascii[i]<ascii[j])
+                {
+                    int t=ans[i];
+                    ans[i]=ans[j];
+                    ans[j]=t;
+                    
+                    char c=ascii[i];
+                    ascii[i]=ascii[j];
+                    ascii[j]=c;
+                }
+            }
+        }
+        
+        if(t>0) printf("\n");
+        for(int i=0; i<256; i++) if(ans[i]>0) printf("%d %d\n", ascii[i], ans[i]);
+    }
 }
 ```
-![](https://i.imgur.com/b5Smnro.png)
+![](https://i.imgur.com/xQdNgGZ.png)
+
 ```c
 #include <stdio.h>
-char line[1001];
-int ans[256];
+int a[100];
 int main()
 {
-	for(int t=0; gets(line)!=NULL; t++)
+	int T;
+	scanf("%d", &T);
+	
+	for(int t=0; t<T; t++)
 	{
-		for(int i=0; i<256; i++) ans[i]=0;
-		
-		for(int i=0; line[i]!=0; i++)
+		int N;
+		scanf("%d", &N);
+		for(int i=0; i<N; i++)
 		{
-			char c=line[i];
-			ans[c]++;
+			scanf("%d", &a[i]);
 		}
 		
-		if(t>0) printf("\n");
+		int ans=0;
 		
-		for(int i=0; i<256; i++) if(ans[i]>0) printf("%d %d\n", i, ans[i]);
+		printf("Optimal train swapping takes %d swaps.\n", ans);
+	}
+}
+```
+![](https://i.imgur.com/jql11WD.png)
+
+```c
+#include <stdio.h>
+int a[100];
+int main()
+{
+	int T, N;
+	scanf("%d", &T);
+	
+	for(int t=0; t<T; t++)
+	{
+		scanf("%d", &N);
+		for(int i=0; i<N; i++)
+		{
+			scanf("%d", &a[i]);
+		}
 		
+		int ans=0;
+		for(int k=0; k<N-1; k++)
+		{
+			for(int i=0; i<N-1; i++)
+			{
+				if(a[i]>a[i+1])
+				{
+					int t=a[i];
+					a[i]=a[i+1];
+					a[i+1]=t;
+					ans++;
+				}
+			}
+		}
+		
+		printf("Optimal train swapping takes %d swaps.\n", ans);
+	}
+}
+```
+![](https://i.imgur.com/Ws3ytxP.png)
+```c
+#include <stdio.h>
+int a[10000];
+int main()
+{
+	int N, M;
+	while(scanf("%d %d", &N, &M)==2)
+	{
+		for(int i=0; i<N; i++)
+		{
+			scanf("%d", a[i]);
+		}
+		
+		printf("%d %d\n", N, M);
+		for(int i=0; i<N; i++)
+		{
+			printf("%d\n", a[i]);
+		}
 	}
 }
 ```
