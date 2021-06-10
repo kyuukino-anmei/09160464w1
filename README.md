@@ -1,174 +1,183 @@
-![](https://i.imgur.com/ydpht4p.png)
-```c
-#include <stdio.h>
-char line[2000];
-int main()
+![](https://i.imgur.com/4lbsiMx.png)
+```java
+void setup()
 {
-    for(int t=0; gets(line); t++)
-    {
-        int ans[256]={};
-        char ascii[256];
-        
-        for(int i=0; i<256; i++)
-        {
-            char c=line[i];
-            ans[c]++;
-        }
-        
-        for(int i=0; i<256; i++)
-        {
-            for(int j=i+1; j<256; j++)
-            {
-                if(ans[i]>ans[j])
-                {
-                    int t=ans[i];
-                    ans[i]=ans[j];
-                    ans[j]=t;
-                    
-                    char c=ascii[i];
-                    ascii[i]=ascii[j];
-                    ascii[j]=c;
-                }
-            }
-        }
-        
-        if(t>0) printf("\n");
-        for(int i=0; i<256; i++) if(ans[i]>0) printf("%d %d\n", ascii[i], ans[i]);
-    }
+  size(400,200); 
+}
+void draw()
+{
+  background(#05DCFF); 
+  ellipse(50,50, 80,80);
 }
 ```
-![](https://i.imgur.com/YOXn0Pe.png)
+![](https://i.imgur.com/cfNVlZt.png)
+```java
+void setup()
+{
+  size(400,200); 
+}
+void draw()
+{
+  background(#05DCFF); 
+  fill(#FF5863);
+  ellipse(50,50, 80,80);
+  fill(#F7BEC2);
+  float stop=mouseX/50.0;
+  text(stop, 100,100);
+  arc(50,50, 80,80, 0, stop);
+}
+```
+![](https://i.imgur.com/RlJU4ya.png)
+```java
+void setup()
+{
+  size(400,200); 
+}
+void draw()
+{
+  background(#05DCFF); 
+  fill(#FF5863);
+  ellipse(50,50, 80,80);
+  fill(#F7BEC2);
+  float start=mouseX/50.0;
+  text(start, 100,100);
+  arc(50,50, 80,80, 0+start, 0.1+start);
+}
+```
+![](https://i.imgur.com/h6XVqtG.png)
+```java
+void setup()
+{
+  size(400,200); 
+}
+void draw()
+{
+  background(#05DCFF); 
+  fill(#FF5863);
+  ellipse(50,50, 80,80);
+  fill(#F7BEC2);
+  float start=mouseX/50.0;
+  text(start, 100,100);
+  for(int i=0; i<24; i++)
+  {
+    float shift=2*PI*i/24.0;
+    if(i%3==0) fill(#00FF0E);
+    if(i%3==1) fill(#FFFFFF);
+    if(i%3==2) fill(#000000);
+    arc(50,50, 80,80, shift+0+start, shift+0.1+start);
+  }
+}
+```
+![](https://i.imgur.com/x4E4vdR.png)
+```java
+void setup()
+{
+  size(400,200); 
+}
+void draw()
+{
+  background(#05DCFF); 
+  fill(#FF5863);
+  ellipse(100,100, 180,180);
+  fill(#F7BEC2);
+  float start=mouseX/50.0;
+  text(start, 100,100);
+  for(int i=0; i<24; i++)
+  {
+    float shift=2*PI*i/24.0;
+    if(i%3==0) fill(#00FF0E);
+    if(i%3==1) fill(#FFFFFF);
+    if(i%3==2) fill(#000000);
+    if(i==0) fill(#FF8008);
+    arc(100,100, 180,180, shift+0+start, shift+PI/12.0+start);
+  }
+}
+```
+![](https://i.imgur.com/yPmcllo.png)
+```java
+void setup()
+{
+  size(400,200); 
+}
+float start=0;
+void draw()
+{
+  background(#05DCFF); 
+  fill(#FF5863);
+  ellipse(100,100, 180,180);
+  if(start<10) start+=0.01;
+  fill(#F7BEC2); 
+  text(start, 200,150);
+  for(int i=0; i<24; i++)
+  {
+    float shift=2*PI*i/24.0;
+    if(i%3==0) fill(#00FF0E);
+    if(i%3==1) fill(#FFFFFF);
+    if(i%3==2) fill(#000000);
+    if(i==0) fill(#FF8008);
+    arc(100,100, 180,180, shift+0+start, shift+PI/12.0+start);
+  }
+}
+```
+![](https://i.imgur.com/aiDkO2E.png)
+```java
+void setup()
+{
+  size(400,200); 
+}
+float start=0, v=0.07;
+void draw()
+{
+  background(#05DCFF); 
+  if(v>0.001)
+  {
+    start+=v;
+    v*=0.999;
+  }
+  fill(#F7BEC2); text(start, 200,150); text(v, 200, 170);
+  for(int i=0; i<24; i++)
+  {
+    float shift=2*PI*i/24.0;
+    if(i%3==0) fill(#00FF0E);
+    if(i%3==1) fill(#FFFFFF);
+    if(i%3==2) fill(#000000);
+    if(i==0) fill(#FF8008);
+    arc(100,100, 180,180, shift+0+start, shift+PI/12.0+start);
+  }
+}
+```
+![](https://i.imgur.com/8nrChGs.png)
+```java
+void setup()
+{
+  size(400,200); 
+}
+float start=0, v;
+void draw()
+{
+  background(#05DCFF); 
+  if(v>0.001)
+  {
+    start+=v;
+    v*=0.999;
+  }
+  fill(#F7BEC2); text(start, 200,150); text(v, 200, 170);
+  for(int i=0; i<24; i++)
+  {
+    float shift=2*PI*i/24.0;
+    if(i%3==0) fill(#00FF0E);
+    if(i%3==1) fill(#FFFFFF);
+    if(i%3==2) fill(#000000);
+    if(i==0) fill(#FF8008);
+    arc(100,100, 180,180, shift+0+start, shift+PI/12.0+start);
+  }
+}
+void mousePressed()
+{
+  v=random(1); 
+}
+```
 
-```c
-#include <stdio.h>
-char line[2000];
-int main()
-{
-    for(int t=0; gets(line); t++)
-    {
-        int ans[256]={};
-        char ascii[256];
-        
-        for(int i=0; i<256; i++)
-        {
-            char c=line[i];
-            ans[c]++;
-        }
-        
-        for(int i=0; i<256; i++)
-        {
-            for(int j=i+1; j<256; j++)
-            {
-                if(ans[i]>ans[j])
-                {
-                    int t=ans[i];
-                    ans[i]=ans[j];
-                    ans[j]=t;
-                    
-                    char c=ascii[i];
-                    ascii[i]=ascii[j];
-                    ascii[j]=c;
-                }
-                
-                if(ans[i]==ans[j] && ascii[i]<ascii[j])
-                {
-                    int t=ans[i];
-                    ans[i]=ans[j];
-                    ans[j]=t;
-                    
-                    char c=ascii[i];
-                    ascii[i]=ascii[j];
-                    ascii[j]=c;
-                }
-            }
-        }
-        
-        if(t>0) printf("\n");
-        for(int i=0; i<256; i++) if(ans[i]>0) printf("%d %d\n", ascii[i], ans[i]);
-    }
-}
-```
-![](https://i.imgur.com/xQdNgGZ.png)
 
-```c
-#include <stdio.h>
-int a[100];
-int main()
-{
-	int T;
-	scanf("%d", &T);
-	
-	for(int t=0; t<T; t++)
-	{
-		int N;
-		scanf("%d", &N);
-		for(int i=0; i<N; i++)
-		{
-			scanf("%d", &a[i]);
-		}
-		
-		int ans=0;
-		
-		printf("Optimal train swapping takes %d swaps.\n", ans);
-	}
-}
-```
-![](https://i.imgur.com/jql11WD.png)
 
-```c
-#include <stdio.h>
-int a[100];
-int main()
-{
-	int T, N;
-	scanf("%d", &T);
-	
-	for(int t=0; t<T; t++)
-	{
-		scanf("%d", &N);
-		for(int i=0; i<N; i++)
-		{
-			scanf("%d", &a[i]);
-		}
-		
-		int ans=0;
-		for(int k=0; k<N-1; k++)
-		{
-			for(int i=0; i<N-1; i++)
-			{
-				if(a[i]>a[i+1])
-				{
-					int t=a[i];
-					a[i]=a[i+1];
-					a[i+1]=t;
-					ans++;
-				}
-			}
-		}
-		
-		printf("Optimal train swapping takes %d swaps.\n", ans);
-	}
-}
-```
-![](https://i.imgur.com/Ws3ytxP.png)
-```c
-#include <stdio.h>
-int a[10000];
-int main()
-{
-	int N, M;
-	while(scanf("%d %d", &N, &M)==2)
-	{
-		for(int i=0; i<N; i++)
-		{
-			scanf("%d", a[i]);
-		}
-		
-		printf("%d %d\n", N, M);
-		for(int i=0; i<N; i++)
-		{
-			printf("%d\n", a[i]);
-		}
-	}
-}
-```
+
